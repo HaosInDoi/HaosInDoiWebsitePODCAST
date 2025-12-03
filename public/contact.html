@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact • Haos În Doi</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="top-navbar">
+        <a href="index.html" class="logo">Haos In Doi</a>
+        <div class="top-right">
+            <button id="themeToggle" class="theme-btn">🌓</button>
+        </div>
+    </header>
+
+    <!-- MENIU -->
+    <nav class="bottom-navbar">
+        <ul class="menu-left">
+            <li><a href="index.html">Acasă</a></li>
+            <li><a href="https://www.youtube.com/channel/UCz9uJQrU-6kjBUuoAluQCyw">Podcast</a></li>
+            <li><a class="active" href="contact.html">Contact</a></li>
+        </ul>
+
+        <ul class="menu-right">
+
+            <li><a href="despre.html">Despre Noi</a></li>
+            <li><a href="propuneri.html">Propuneri</a></li>
+            <!-- ULTERIOR MENIU MAI COMPLEX CAND AVEM IDEI -->
+
+        </ul>
+    </nav>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-section">
+
+        <section class="hero">
+            <h1 class="hero-title">Contactează-ne</h1>
+            <p class="hero-sub">Spune-ne ce ai pe suflet. Mesajul tău ajunge direct la noi.</p>
+        </section>
+
+        <section class="contact-wrapper">
+            <form id="contactForm" class="contact-form">
+                
+                <div class="input-group">
+                    <label>Nume complet</label>
+                    <input type="text" name="name" placeholder="Ex: Andrei Popescu" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="Ex: exemplu@gmail.com" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Subiect</label>
+                    <input type="text" name="subject" placeholder="Despre ce este mesajul?" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Mesaj</label>
+                    <textarea name="message" rows="6" placeholder="Scrie aici mesajul tău..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary submit-btn">Trimite mesajul</button>
+
+                <p id="formStatus" class="form-status"></p>
+
+            </form>
+        </section>
+
+    </main>
+
+    <script src="main.js"></script>
+
+    <script>
+        // Submit form
+        document.getElementById("contactForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const form = e.target;
+            const status = document.getElementById("formStatus");
+
+            const data = {
+                name: form.name.value,
+                email: form.email.value,
+                subject: form.subject.value,
+                message: form.message.value
+            };
+
+            status.textContent = "⏳ Se trimite...";
+            status.style.color = "var(--text)";
+
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            });
+
+            const result = await res.json();
+
+            if (result.success) {
+                status.textContent = "✔️ Mesaj trimis cu succes!";
+                status.style.color = "limegreen";
+                form.reset();
+            } else {
+                status.textContent = "❌ Eroare: " + result.error;
+                status.style.color = "red";
+            }
+        });
+    </script>
+
+<footer class="footer">
+    <div class="footer-container">
+
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <p>📞 Robert — +40 739 219 722</p>
+            <p>📞 Gabriel — +40 774 492 432</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Legal</h3>
+            <a href="termeni.html">Termeni & Condiții</a><br>
+            <a href="politica.html">Politica de Confidențialitate</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2025 Haos În Doi — Toate drepturile rezervate.
+    </div>
+</footer>
+
+</body>
+</html>

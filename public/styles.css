@@ -1,0 +1,826 @@
+/* ----------------------------------------------------
+   PALETĂ + ROOT VARS — Glow Glass Luxury
+---------------------------------------------------- */
+
+:root {
+    /* Light mode */
+    --bg: #f5f7fa;
+    --text: #1a1a1d;
+
+    --glass: rgba(255, 255, 255, 0.55);
+    --glass-border: rgba(0, 0, 0, 0.08);
+
+    --accent: #4f8bff;
+    --accent-glow: rgba(79, 139, 255, 0.55);
+    --accent-soft: rgba(79, 139, 255, 0.15);
+
+    --radius: 18px;
+    --shadow-main: 0 10px 28px rgba(0, 0, 0, 0.06);
+
+    --gradient-main: linear-gradient(135deg, #94b4ff, #b9d2ff);
+}
+
+/* Dark mode */
+.dark {
+    --bg: #0c0f14;
+    --text: #e6e9f2;
+
+    --glass: rgba(20, 22, 30, 0.55);
+    --glass-border: rgba(255, 255, 255, 0.07);
+
+    --accent: #7fb1ff;
+    --accent-glow: rgba(127, 177, 255, 0.65);
+    --accent-soft: rgba(127, 177, 255, 0.25);
+
+    --shadow-main: 0 10px 28px rgba(0, 0, 0, 0.5);
+
+    --gradient-main: linear-gradient(135deg, #3c65ff, #6daaff);
+}
+
+/* ----------------------------------------------------
+   GLOBAL STYLE
+---------------------------------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* Soft fade animations */
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ----------------------------------------------------
+   TOP NAVBAR — Neon Glass Premium
+---------------------------------------------------- */
+
+.top-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 16px 26px;
+    background: var(--glass);
+    backdrop-filter: blur(16px) saturate(160%);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-main);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    animation: fadeDown 0.6s ease;
+    border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 900;
+    text-decoration: none;
+    color: var(--text);
+    letter-spacing: -0.5px;
+
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    color: transparent;
+
+    transition: 0.3s ease;
+}
+
+.logo:hover {
+    text-shadow: 0 0 14px var(--accent-glow);
+    transform: scale(1.04);
+}
+
+.top-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.theme-btn,
+.profile-icon {
+    font-size: 22px;
+    padding: 10px;
+    border-radius: var(--radius);
+    border: 1px solid var(--glass-border);
+    cursor: pointer;
+
+    background: var(--accent-soft);
+    backdrop-filter: blur(10px);
+
+    transition: 0.25s ease;
+}
+
+.theme-btn:hover,
+.profile-icon:hover {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 18px var(--accent-glow);
+    transform: scale(1.16);
+}
+
+/* ----------------------------------------------------
+   BOTTOM NAVBAR — Dual Menu Glass Tabs
+---------------------------------------------------- */
+
+.bottom-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 14px 30px;
+    background: var(--glass);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-main);
+
+    border-radius: 0 0 var(--radius) var(--radius);
+
+    animation: fadeDown 0.7s ease;
+}
+
+.bottom-navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 16px;
+}
+
+.bottom-navbar a {
+    text-decoration: none;
+    color: var(--text);
+
+    padding: 10px 16px;
+    border-radius: var(--radius);
+    transition: 0.25s ease;
+
+    font-weight: 600;
+    border: 1px solid transparent;
+}
+
+.bottom-navbar a:hover {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 20px var(--accent-glow);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* ----------------------------------------------------
+   CONTENT
+---------------------------------------------------- */
+
+main {
+    padding: 40px 26px;
+    animation: fadeUp 0.7s ease;
+}
+
+h1 {
+    font-size: 42px;
+    font-weight: 900;
+    margin-bottom: 14px;
+
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    color: transparent;
+
+    text-shadow: 0 0 20px var(--accent-soft);
+}
+
+/* ----------------------------------------------------
+   RESPONSIVE
+---------------------------------------------------- */
+
+@media (min-width: 768px) {
+    .top-navbar { padding: 20px 50px; }
+    .bottom-navbar { padding: 16px 50px; }
+
+    h1 { font-size: 50px; }
+}
+
+@media (min-width: 1200px) {
+    .top-navbar { padding: 22px 80px; }
+    .bottom-navbar { padding: 18px 80px; }
+
+    main { padding: 60px 120px; }
+}
+
+/* ----------------------------------------------------
+   MAIN — Layout general
+---------------------------------------------------- */
+
+.main-section {
+    padding: 60px 24px;
+    animation: fadeUp 0.7s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* ----------------------------------------------------
+   HERO SECTION — Neon Title + Glow
+---------------------------------------------------- */
+
+.hero {
+    text-align: center;
+    max-width: 900px;
+    margin: auto;
+}
+
+.hero-title {
+    font-size: 54px;
+    font-weight: 900;
+
+    background: linear-gradient(135deg, var(--accent), var(--text));
+    -webkit-background-clip: text;
+    color: transparent;
+
+    text-shadow: 0 0 24px var(--accent-soft);
+    margin-bottom: 12px;
+
+    animation: floating 4s ease-in-out infinite;
+}
+
+.hero-sub {
+    font-size: 20px;
+    opacity: 0.85;
+    margin-bottom: 30px;
+}
+
+/* Buttons */
+.hero-btns {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 14px 26px;
+    border-radius: var(--radius);
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    transition: 0.3s ease;
+    border: 1px solid var(--glass-border);
+}
+
+/* Primary */
+.btn-primary {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 24px var(--accent-glow);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+
+/* Secondary */
+.btn-secondary {
+    background: var(--accent-soft);
+    color: var(--text);
+}
+
+.btn-secondary:hover {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 0 20px var(--accent-glow);
+    transform: translateY(-3px);
+}
+
+/* ----------------------------------------------------
+   ICON CARDS — Versiune compactă, simetrică, premium
+---------------------------------------------------- */
+
+.icons-cards {
+    display: grid;
+    gap: 26px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.icon-card {
+    background: var(--glass);
+    backdrop-filter: blur(18px) saturate(170%);
+    padding: 26px 20px;
+    border-radius: var(--radius);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-main);
+
+    height: 180px;                     /* înălțime fixă pentru aliniere perfectă */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;           /* centrare pe verticală */
+    align-items: center;
+    gap: 12px;
+
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 700;
+    font-size: 17px;
+
+    transition: 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glow radial subtil */
+.icon-card::after {
+    content: "";
+    position: absolute;
+    width: 130%;
+    height: 130%;
+    top: -15%;
+    left: -15%;
+    background: radial-gradient(circle, var(--accent-soft), transparent 75%);
+    opacity: 0;
+    transition: 0.4s ease;
+}
+
+.icon-card:hover::after {
+    opacity: 1;
+}
+
+/* Hover efect premium */
+.icon-card:hover {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 0 26px var(--accent-glow);
+    border-color: var(--accent);
+}
+
+/* Icon styling */
+.icon-card .icon {
+    width: 50px;
+    height: 50px;
+    transition: 0.3s ease;
+    color: var(--text);
+}
+
+/* Glow icon pe hover */
+.icon-card:hover .icon {
+    transform: scale(1.2);
+    color: var(--accent);
+    filter: drop-shadow(0 0 14px var(--accent-glow));
+}
+
+/* Text */
+.icon-card span {
+    font-size: 16px;
+    opacity: 0.9;
+    text-align: center;
+}
+
+/* ----------------------------------------------------
+   RESPONSIVE
+---------------------------------------------------- */
+
+@media (min-width: 768px) {
+    .hero-title { font-size: 66px; }
+    .cards { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 1200px) {
+    .main-section { padding: 80px 120px; }
+    .hero-title { font-size: 78px; }
+}
+
+/* CONTACT FORM — Glass + Neon */
+
+.contact-wrapper {
+    max-width: 600px;
+    margin: auto;
+    width: 100%;
+}
+
+.contact-form {
+    background: var(--glass);
+    backdrop-filter: blur(18px) saturate(170%);
+    padding: 30px;
+    border-radius: var(--radius);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-main);
+    animation: fadeUp 0.6s ease;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 15px;
+    opacity: 0.85;
+}
+
+.input-group input,
+.input-group textarea {
+    padding: 14px;
+    border-radius: var(--radius);
+    border: 1px solid var(--glass-border);
+
+    background: var(--accent-soft);
+    color: var(--text);
+
+    backdrop-filter: blur(10px);
+    font-size: 15px;
+
+    transition: 0.25s;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.submit-btn {
+    width: 100%;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.form-status {
+    margin-top: 16px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* ----------------------------------------------------
+   FOOTER — Full Width Real (no container, no limits)
+---------------------------------------------------- */
+
+.footer {
+    width: 100%;
+    background: rgba(0,0,0,0.25);
+    backdrop-filter: blur(18px) saturate(160%);
+    border-top: 1px solid var(--glass-border);
+    box-shadow: 0 -6px 25px rgba(0,0,0,0.45);
+
+    padding: 40px 0 25px;
+    margin: 0;
+
+    /* cheia principală → footerul stă pe toată lățimea */
+    display: block;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 40px;
+}
+
+.footer-section h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.footer-section p,
+.footer-section a {
+    font-size: 16px;
+    opacity: 0.85;
+}
+
+.footer-section a:hover {
+    opacity: 1;
+    color: var(--accent);
+}
+
+.footer-icons {
+    display: flex;
+    gap: 16px;
+}
+
+.footer-icon img {
+    width: 36px;
+    height: 36px;
+    transition: 0.3s;
+}
+
+.footer-icon img:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 10px var(--accent-glow));
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--glass-border);
+    text-align: center;
+    opacity: 0.7;
+}
+
+/* sticky bottom logic */
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+.legal-page {
+    background: var(--glass);
+    padding: 40px 34px;
+    border-radius: var(--radius);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-main);
+    backdrop-filter: blur(18px);
+    max-width: 900px;
+    margin: auto;
+}
+
+.legal-page h1 {
+    font-size: 46px;
+    margin-bottom: 20px;
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.legal-page h2 {
+    margin-top: 28px;
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.legal-page p, .legal-page li {
+    opacity: 0.88;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.legal-footer {
+    margin-top: 40px;
+    opacity: 0.5;
+    font-size: 14px;
+    text-align: right;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-bottom: 25px;
+    padding: 12px 22px;
+
+    background: var(--accent-soft);
+    color: var(--text);
+    border-radius: var(--radius);
+    border: 1px solid var(--glass-border);
+
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+
+    backdrop-filter: blur(10px);
+    transition: 0.3s ease;
+}
+
+.back-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 18px var(--accent-glow);
+    transform: translateY(-2px);
+}
+
+/* Dropdown — vizibil și când se deschide lista */
+.contact-form select {
+    appearance: none;
+    padding: 14px;
+    border-radius: var(--radius);
+    border: 1px solid var(--glass-border);
+
+    background: var(--accent-soft);
+    color: var(--text);
+    font-size: 15px;
+
+    backdrop-filter: blur(12px);
+    transition: 0.25s ease;
+    cursor: pointer;
+
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23aaa' height='24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+
+
+/* Când este apăsat / deschis */
+.contact-form select:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: rgba(127, 177, 255, 0.22);
+    box-shadow: 0 0 18px var(--accent-glow);
+}
+
+
+/* LISTA DESFĂȘURATĂ — IMPORTANT! */
+.contact-form select option {
+    background: var(--glass);
+    color: var(--text);
+    padding: 10px;
+    border: none;
+}
+
+/* hover pe opțiuni */
+.contact-form select option:hover {
+    background: var(--accent-soft);
+    color: var(--text);
+}
+
+/* varianta selectată */
+.contact-form select option:checked {
+    background: var(--accent);
+    color: white;
+}
+
+/* ----------------------------------------------------
+   LIGHTHOUSE BOOST — Performance + Mobile + CSS Cleanup
+---------------------------------------------------- */
+
+/* 1. Reduce paint cost — scrolling mai fluid pe mobil */
+html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* 2. Optimize animations pentru mobile (reduce CPU) */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* 3. Limitează blur-ul pe mobil (blur mare = scor slab performance) */
+@media (max-width: 768px) {
+    .top-navbar,
+    .bottom-navbar,
+    .icon-card,
+    .contact-form,
+    .legal-page {
+        backdrop-filter: blur(10px) saturate(140%);
+    }
+}
+
+/* 4. Previi CLS (layout shift) — rezervi spațiu pentru imagini */
+img {
+    aspect-ratio: attr(width) / attr(height);
+    object-fit: cover;
+}
+
+/* 5. Optimizezi font rendering (contează enorm pentru LCP) */
+body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    font-smooth: always;
+}
+
+/* 6. Evită overflow pe mobil (reduce CLS) */
+* {
+    max-width: 100%;
+    overflow-wrap: break-word;
+}
+
+/* 7. Reduce shadow cost pe mobil (shadow mare = FPS scăzut) */
+@media (max-width: 768px) {
+    :root {
+        --shadow-main: 0 6px 14px rgba(0, 0, 0, 0.08);
+    }
+}
+
+/* 8. Asigură că elementele interactive sunt “tappable” (Lighthouse Accessibility) */
+button,
+a,
+.input-group input,
+.input-group textarea,
+.icon-card {
+    min-height: 44px;
+}
+
+/* 9. Optimizezi grid-ul pe mobil pentru CPU mai mic */
+@media (max-width: 600px) {
+    .icons-cards {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 20px;
+    }
+}
+
+/* 10. Prioritize text visibility (Lighthouse SEO + A11y) */
+:root {
+    --text: #111112;
+}
+.dark {
+    --text: #f0f0f5;
+}
+
+/* ----------------------------------------------------
+   ABOUT PAGE — Team Cards
+---------------------------------------------------- */
+
+.about-wrapper {
+    max-width: 1100px;
+    margin: auto;
+    text-align: center;
+}
+
+.about-title {
+    font-size: 52px;
+    margin-bottom: 10px;
+}
+
+.about-sub {
+    font-size: 18px;
+    opacity: 0.85;
+    margin-bottom: 50px;
+}
+
+.team-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    justify-items: center;
+}
+
+.team-card {
+    background: var(--glass);
+    backdrop-filter: blur(18px) saturate(170%);
+    padding: 32px 26px;
+    border-radius: var(--radius);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-main);
+
+    max-width: 380px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 26px var(--accent-glow);
+    border-color: var(--accent);
+}
+
+.team-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+
+    border: 4px solid var(--accent);
+    box-shadow: 0 0 18px var(--accent-glow);
+    margin-bottom: 20px;
+
+    transition: 0.3s;
+}
+
+.team-card:hover .team-avatar {
+    transform: scale(1.07);
+    box-shadow: 0 0 24px var(--accent-glow);
+}
+
+.team-name {
+    font-size: 26px;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.team-role {
+    font-size: 15px;
+    opacity: 0.8;
+    margin-bottom: 16px;
+}
+
+.team-bio {
+    font-size: 15px;
+    opacity: 0.85;
+    line-height: 1.5;
+}
